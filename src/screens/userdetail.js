@@ -1,7 +1,7 @@
 export default function userdetail() {
     return (
         <div>
-            User detail
+            User details
         </div>
     );
 }

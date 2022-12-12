@@ -1,0 +1,25 @@
+import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { SearchIcon } from "@chakra-ui/icons";
+
+export default function searchbar() {
+  return (
+    <div className="searchBar">
+      <InputGroup>
+        <InputLeftElement
+          pointerEvents="none"
+          fontSize="1.2em"
+          children={<SearchIcon color="gray.300" />}
+        />
+        <Input
+          placeholder="Search..."
+          size="md"
+          color = "white"
+          variant='flushed'
+          onChange={(event) => {
+            // Handle the user's input
+          }}
+        />
+      </InputGroup>
+    </div>
+  );
+}

@@ -7,11 +7,13 @@ import SignOut from "./screens/signout";
 import SignUp from "./screens/signup";
 import Home from  "./screens/home"
 import UserDetail from './screens/userdetail';
+import Userlistitem from './components/userlistitem';
 
 
 function App() {
   return (
     <ChakraProvider>
+    <div className='App'>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}index />
@@ -20,8 +22,10 @@ function App() {
         <Route path="signout" element={<SignOut />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="userdetail" element={<UserDetail />} />
+        <Route path="userlistitem" element={<Userlistitem />} />
       </Routes>
     </BrowserRouter>
+    </div>
     </ChakraProvider>
   );
 }
