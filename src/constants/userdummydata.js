@@ -1,6 +1,5 @@
 export const data = [
-
-{
+    {
         created_at: "2022-12-12T17:04:11.799482Z",
         email_verified: true,
         interests: [{
@@ -36,8 +35,7 @@ export const data = [
         },
         
     },
-
-  {
+    {
         created_at: "2022-11-12T17:04:11.799482Z",
         email_verified: true,
         interests: [{
@@ -52,7 +50,5 @@ export const data = [
                 uri: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/473b78127843773.614a2fd14fc67.png"
               },
         },
-        
-      }
-
+    }
 ]
