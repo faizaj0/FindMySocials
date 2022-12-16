@@ -17,7 +17,7 @@ export default function Userlistitem() {
         spaceBetween={0}
         slidesPerView={1}
         onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        // onSlideChange={() => {navigate('/userlistitem/'+item.generalinfo.first_name)}}
       >
         {data.map((item) => (
           <SwiperSlide className="slide1">
