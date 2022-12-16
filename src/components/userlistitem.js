@@ -8,8 +8,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { data } from "../constants/userdummydata";
+import { useParams } from "react-router-dom";
 
 export default function Userlistitem() {
+  let { index } = useParams();
+
   return (
     <div className="flex-container swipe-profile">
       <Swiper
@@ -18,6 +21,7 @@ export default function Userlistitem() {
         slidesPerView={1}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
+        initialSlide={index}
       >
         {data.map((item) => (
           <SwiperSlide className="slide1">

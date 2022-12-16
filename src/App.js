@@ -23,7 +23,7 @@ function App() {
         <Route path="signup" element={<SignUp />} />
         <Route path="userdetail" element={<UserDetail />} />
         <Route path="userlistitem" element={<Userlistitem />} />
-        <Route path='userlistitem/:id' element={<Userlistitem/>} />
+        <Route path='userlistitem/:index' element={<Userlistitem/>} />
        
       </Routes>
     </BrowserRouter>
