@@ -1,9 +1,11 @@
+import SignInForm from '../components/signinform'
 
 
-export default function SignIn() {
+export default function Signin() {
+
     return (
-        <div>
-            Sign In
-        </div>
+      <div className='signinpage'>
+          <SignInForm />
+      </div>
     );
-}
+  }

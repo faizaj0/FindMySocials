@@ -40,6 +40,8 @@ export default function Footer() {
           size="lg"
           aria-label="Search database"
           icon={<SettingsIcon />}
+          onClick={() => {navigate('/signin')}}
+
         />
       </Flex>
     </div>

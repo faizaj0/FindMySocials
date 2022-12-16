@@ -9,7 +9,7 @@ import Userlist from "../components/userlist.js";
 
 export default function home() {
     return (
-        <div>
+        <div className="home">
             <Header />
             <Searchbar />
             <Userlist />

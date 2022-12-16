@@ -1,7 +1,5 @@
-import { React } from "react";
-import { useSwiper } from "swiper/react";
+import React, { useState } from "react";
 
-import { Image, Box } from "@chakra-ui/react";
 import { Button, ButtonGroup, VStack, StackDivider } from "@chakra-ui/react";
 import {
   FaFacebook,
@@ -11,8 +9,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 
-export default function Usersocials() {
-  const swiper = useSwiper();
+export default function Usersocials(props) {
   return (
     <div className="usersocials flex-container">
       <VStack spacing={5} align="stretch">
