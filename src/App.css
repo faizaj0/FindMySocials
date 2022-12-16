@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   /* background-color: 	#1C252C; */
-  color: aliceblue;
   
 }
 
@@ -125,6 +124,10 @@
   position: absolute;
   padding: 50px !important;
  
+}
+
+.swipebuttons{
+  justify-content: flex-end;
 }
 
 

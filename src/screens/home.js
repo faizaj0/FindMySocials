@@ -1,3 +1,4 @@
+
 import Header from "../components/header.js";
 import Searchbar from "../components/searchbar.js";
 import Footer from "../components/footer";

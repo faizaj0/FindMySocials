@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import { Avatar, Button } from "@chakra-ui/react";
 import { Wrap, WrapItem } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";

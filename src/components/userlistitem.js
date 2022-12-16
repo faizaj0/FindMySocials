@@ -7,8 +7,10 @@ import ProfileImage from "./userprofileimg.js";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
+import React, { Component }  from 'react';
 import { data } from "../constants/userdummydata";
 import { useParams } from "react-router-dom";
+import { StackItem } from "@chakra-ui/react";
 
 export default function Userlistitem() {
   let { index } = useParams();
@@ -22,10 +24,11 @@ export default function Userlistitem() {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
         initialSlide={index}
+       
       >
         {data.map((item) => (
           <SwiperSlide className="slide1">
-            <Userdetail item={item.generalinfo} />
+            <Userdetail item={item} />
             <ProfileImage imgSrc={item.generalinfo.image.uri}/>
           </SwiperSlide>
         ))}

@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { Flex } from "@chakra-ui/react";

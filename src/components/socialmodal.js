@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import Usersocials from './usersocials.js'
 import {
     Modal,
