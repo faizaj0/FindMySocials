@@ -19,11 +19,9 @@ export default function Userdetail(item) {
       
 
       {data.map((item) => {
-       
-        
         if (id == item.generalinfo.first_name) {
+          
           return (
-            
             <div>
               <h1>{item.generalinfo.first_name} {item.generalinfo.last_name}</h1>
               {/* to be changed: */}
@@ -31,9 +29,12 @@ export default function Userdetail(item) {
               <Socialmodal />
               
             </div>
-          );
+          )
+          
         }
-      })}
+
+        }
+      )}
     </div>
    
   );

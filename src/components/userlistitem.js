@@ -21,8 +21,8 @@ export default function Userlistitem() {
       >
         {data.map((item) => (
           <SwiperSlide className="slide1">
-            <Userdetail item={item} />
-            <ProfileImage />
+            <Userdetail item={item.generalinfo} />
+            <ProfileImage imgSrc={item.generalinfo.image.uri}/>
           </SwiperSlide>
         ))}
       </Swiper>
