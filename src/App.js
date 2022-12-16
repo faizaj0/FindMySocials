@@ -23,8 +23,8 @@ function App() {
         <Route path="signout" element={<SignOut />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="userdetail" element={<UserDetail />} />
-        <Route path="userlistitem" element={<Userlistitem />} />
-        <Route path='userlistitem/:index' element={<Userlistitem/>} />
+        <Route path="user" element={<Userlistitem />} />
+        <Route path='user/:index' element={<Userlistitem/>} />
        
       </Routes>
     </BrowserRouter>

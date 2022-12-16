@@ -19,7 +19,7 @@ export default function Userlist() {
         
          <div key={index} className="userlistitem">
            
-            <Image src={item.generalinfo.image.uri} onClick={() => {navigate('/userlistitem/'+index)}}/>
+            <Image src={item.generalinfo.image.uri} onClick={() => {navigate('/user/'+index)}}/>
          </div>
        
       ))}
