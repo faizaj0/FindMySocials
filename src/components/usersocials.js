@@ -9,7 +9,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 
-export default function Usersocials(props) {
+export default function Usersocials() {
   return (
     <div className="usersocials flex-container">
       <VStack spacing={5} align="stretch">
