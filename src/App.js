@@ -10,6 +10,7 @@ import Home from  "./screens/home";
 import UserDetail from './screens/userdetail';
 import Userlistitem from './components/userlistitem';
 
+import { paths } from './constants/paths';
 
 function App() {
   return (
@@ -17,15 +18,13 @@ function App() {
     <div className='App'>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}index />
-        <Route path="home" element={<Home />} index />
-        <Route path="signin" element={<Signin />} />
-        <Route path="signout" element={<SignOut />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="userdetail" element={<UserDetail />} />
-        <Route path="user" element={<Userlistitem />} />
-        <Route path='user/:index' element={<Userlistitem/>} />
-       
+        <Route path={paths.ROOT} element={<Home />} index />
+        <Route path={paths.HOME} element={<Home />} index />
+        <Route path={paths.SIGN_IN} element={<Signin />} />
+        <Route path={paths.SIGN_OUT} element={<SignOut />} />
+        <Route path={paths.SIGN_UP} element={<SignUp />} />
+        <Route path={paths.USER_DETAIL} element={<Userlistitem />} />
+        <Route path={paths.USER_DETAIL_INDEX} element={<Userlistitem/>} />
       </Routes>
     </BrowserRouter>
     </div>
