@@ -11,6 +11,11 @@ export const setUserToken = (token, rememberMe) => {
     }
 }
 
+export const deleteUserToken = () => {
+    localStorage.removeItem("userToken");
+    sessionStorage.removeItem("userToken");
+}
+
 export const getReqHeaders = (token) => {
     const headers = {
         "Content-Type": "application/json",

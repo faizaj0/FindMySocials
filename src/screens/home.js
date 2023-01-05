@@ -6,7 +6,7 @@ import UserGrid from "../components/UserGrid.js";
 
 export default function Home() {
     return (
-        <div className="home">
+        <div className="page-home">
             <Header />
             <SearchBar />
             <UserGrid />

@@ -39,7 +39,7 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   
   return (
-    <div className="signupform">
+    <div className="page-sign-up">
       <Flex
         minH={"100vh"}
         align={"center"}
