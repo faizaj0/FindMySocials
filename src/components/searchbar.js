@@ -2,9 +2,9 @@ import React, { Component }  from 'react';
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 
-export default function searchbar() {
+export default function SearchBar() {
   return (
-    <div className="searchBar">
+    <div className="search-bar">
       <InputGroup>
         <InputLeftElement
           pointerEvents="none"
