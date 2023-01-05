@@ -1,10 +1,9 @@
 import SignInForm from '../components/signinform'
-import React, { Component }  from 'react';
 
-export default function Signin() {
+export default function SignIn() {
 
     return (
-      <div className='signinpage'>
+      <div className='page-sign-in'>
           <SignInForm />
       </div>
     );

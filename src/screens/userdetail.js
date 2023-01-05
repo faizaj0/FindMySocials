@@ -5,7 +5,7 @@ import { AiOutlineStop } from "react-icons/ai";
 import Socialmodal from "../components/socialmodal";
 
 export default function Userdetail({ item }) {
-  console.log(item);
+
   return (
     <div className="flex-container userdetail">
      
