@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import ProfileImage from "./userprofileimg.js";
+import ProfileImage from "./ProfileImage.js";
 import UserSliderItem from "./UserSliderItem.js";
 
 export default function UserSlider({ users, initialSlide=0, userProfile }) {

@@ -9,7 +9,6 @@ export default function UserSliderItem({ item, userProfile }) {
                 <h1>
                     {item.general_info.first_name} {item.general_info.last_name}
                 </h1>
-                {/* to be changed: */}
                 <p>
                     Distance: {getDistance(
                       userProfile.location.latitude,
