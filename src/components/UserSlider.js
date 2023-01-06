@@ -3,7 +3,7 @@ import "swiper/css";
 import ProfileImage from "./userprofileimg.js";
 import UserSliderItem from "./UserSliderItem.js";
 
-export default function UserSlider({ users, initialSlide=0 }) {
+export default function UserSlider({ users, initialSlide=0, userProfile }) {
     const placeholder = "https://via.placeholder.com/250x250";
 
     return (
@@ -17,7 +17,7 @@ export default function UserSlider({ users, initialSlide=0 }) {
         >
             {users && users.map((item, index) => (
                 <SwiperSlide className="slide1" key={index}>
-                    <UserSliderItem item={item} />
+                    <UserSliderItem item={item} userProfile={userProfile} />
                     <ProfileImage imgSrc={placeholder} />
                 </SwiperSlide>
             ))}

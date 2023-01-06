@@ -1,7 +1,7 @@
 
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import UserGrid from "../components/UserGrid.js";
 import { useEffect, useState } from "react";
 import { handleReq } from "../constants/utils";

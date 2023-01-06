@@ -11,7 +11,7 @@ import {
   } from '@chakra-ui/react'
 
 
-  export default function Socialsmodal() {
+  export default function SocialsModal() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
       <div >

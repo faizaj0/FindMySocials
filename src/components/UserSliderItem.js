@@ -1,6 +1,8 @@
-import Socialmodal from "../components/socialmodal";
+import { getDistance } from "../constants/utils";
 
-export default function UserSliderItem({ item }) {
+import SocialsModal from "./SocialsModal";
+
+export default function UserSliderItem({ item, userProfile }) {
     return (
         <div className="flex-container userdetail">
             <div>
@@ -9,9 +11,14 @@ export default function UserSliderItem({ item }) {
                 </h1>
                 {/* to be changed: */}
                 <p>
-                    Distance: 100m
+                    Distance: {getDistance(
+                      userProfile.location.latitude,
+                      userProfile.location.longitude,
+                      item.location.latitude,
+                      item.location.longitude
+                    )} km
                 </p>
-                <Socialmodal />
+                <SocialsModal />
             </div>
             <div className='swipebuttons flex-container'>
             </div>
