@@ -42,12 +42,16 @@ export const handleReq = async (url, method='GET', body, navigate, withAuth=true
         return;
     }
 
-    // Fetch request
-    return await fetch(url, {
+    const options = {
         method: method,
         headers: getReqHeaders(userToken),
-        body: JSON.stringify(body),
-    })
+    }
+    if (body) {
+        options.body = JSON.stringify(body);
+    }
+
+    // Fetch request
+    return await fetch(url, options)
     .then(response => {
         // Sign out if token is expired
         if (response.status == 401) {
@@ -62,4 +66,21 @@ export const handleReq = async (url, method='GET', body, navigate, withAuth=true
     .catch(error => {
         console.error("Error: ", error);
     });
+}
+
+export const getDistance = (lat1, lon1, lat2, lon2) => {
+    function deg2rad(deg) {
+        return deg * (Math.PI/180)
+    }
+
+    const R = 6371; // Radius of the earth in km
+    const dLat = deg2rad(lat2-lat1);  // deg2rad below
+    const dLon = deg2rad(lon2-lon1); 
+    const a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+      Math.sin(dLon/2) * Math.sin(dLon/2); 
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    const d = R * c; // Distance in km
+    return Math.round(d);
 }

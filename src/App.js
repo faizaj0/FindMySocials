@@ -7,9 +7,9 @@ import SignIn from "./screens/SignIn"
 import SignOut from "./screens/SignOut";
 import SignUp from "./screens/SignUp";
 import Home from  "./screens/Home";
-import Userlistitem from './components/userlistitem';
 
 import { paths } from './constants/paths';
+import UserDetail from './screens/UserDetail';
 
 function App() {
   return (
@@ -22,8 +22,8 @@ function App() {
         <Route path={paths.SIGN_IN} element={<SignIn />} />
         <Route path={paths.SIGN_OUT} element={<SignOut />} />
         <Route path={paths.SIGN_UP} element={<SignUp />} />
-        <Route path={paths.USER_DETAIL} element={<Userlistitem />} />
-        <Route path={paths.USER_DETAIL_INDEX} element={<Userlistitem/>} />
+        <Route path={paths.USER_DETAIL} element={<UserDetail />} />
+        <Route path={paths.USER_DETAIL_INDEX} element={<UserDetail />} />
       </Routes>
     </BrowserRouter>
     </div>

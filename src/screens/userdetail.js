@@ -1,37 +1,50 @@
-import { Icon, Stack, Button, IconButton } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
-import { AiOutlineStop } from "react-icons/ai";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import Socialmodal from "../components/socialmodal";
+import { handleReq } from "../constants/utils.js";
+import { apiURL } from "../constants/config.js";
 
-export default function Userdetail({ item }) {
+import UserSlider from "../components/UserSlider.js";
+import Footer from "../components/footer.js";
+
+export default function UserDetail() {
+    const placeholder = "https://via.placeholder.com/250x250";
+
+    const { index } = useParams();
+
+    const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(true);
+    const [nearbyUsers, setNearbyUsers] = useState([]);
+    const [userProfile, setUserProfile] = useState();
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const nearbyUsersData = await handleReq(apiURL+"/dj/api/users/test-users-nearby", 'GET', null, navigate);
+        const profileData = await handleReq(apiURL+"/dj/api/users/user-profile/", 'GET', null, navigate);
+        console.log('Nearby Users: ', nearbyUsersData);
+        console.log('User Profile: ', profileData);
+  
+        if (!nearbyUsersData) {
+            console.log('Nearby Users Data Could Not Be Retrieved');
+            return;
+        }
+        if (!profileData) {
+            console.log('User Profile Data Could Not Be Retrieved');
+            return;
+        }
+
+        setNearbyUsers(nearbyUsersData.nearby_users);
+        setUserProfile(profileData[0]);
+        setLoading(false);
+      }
+      fetchData();
+    }, [])
 
   return (
-    <div className="flex-container userdetail">
-     
-      <div>
-        <h1>
-          {item.generalinfo.first_name} {item.generalinfo.last_name}
-        </h1>
-        {/* to be changed: */}
-        <p>Distance: 100m</p>
-        <Socialmodal />
-      </div>
-      <div className='swipebuttons flex-container'>
-      {/* <Stack direction="row" spacing={4}>
-        <IconButton
-            size='lg'
-            fontSize='50px'
-            bg='none'
-            icon={<Icon w={8} h={8} as={AiOutlineStop} />}
-          />
-          <IconButton
-            size='lg'
-            bg='none'
-            icon={<StarIcon w={8} h={8} color="yellow.300"  />}
-          />
-        </Stack> */}
-        </div>
+    <div className="flex-container swipe-profile">
+      <UserSlider users={nearbyUsers} initialSlide={index} />
+      <Footer />
     </div>
   );
 }
