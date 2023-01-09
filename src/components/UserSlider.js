@@ -15,9 +15,9 @@ export default function UserSlider({ users, initialSlide=0, userProfile }) {
             onSlideChange={() => console.log("slide change")}
             initialSlide={initialSlide}
         >
-            {users && users.map((item, index) => (
+            {users && users.map((user, index) => (
                 <SwiperSlide className="slide1" key={index}>
-                    <UserSliderItem item={item} userProfile={userProfile} />
+                    <UserSliderItem user={user} userProfile={userProfile} />
                     <ProfileImage imgSrc={placeholder} />
                 </SwiperSlide>
             ))}

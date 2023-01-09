@@ -1,5 +1,4 @@
 import React, { Component }  from 'react';
-import Usersocials from './usersocials.js'
 import {
     Modal,
     ModalOverlay,
@@ -9,9 +8,10 @@ import {
     Button,
     useDisclosure
   } from '@chakra-ui/react'
+import SocialsLinks from './SocialsLinks.js';
 
 
-  export default function SocialsModal() {
+  export default function SocialsModal({ user }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
       <div >
@@ -22,7 +22,7 @@ import {
           <ModalContent bg='none'>
             <ModalCloseButton />
             <ModalBody>
-              <Usersocials />
+              <SocialsLinks user={user} />
             </ModalBody>
           </ModalContent>
         </Modal>
