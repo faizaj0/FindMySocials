@@ -8,7 +8,7 @@ export default function UserGridItem({ user, userProfile, index }) {
     const placeholder = "https://via.placeholder.com/250x250";
 
     return (
-        <div className="userlistitem">            
+        <div className="userlistitem" style={{display: user.visible ? 'block' : 'none'}}>            
             <Image
                 src={placeholder}
                 onClick={() => {

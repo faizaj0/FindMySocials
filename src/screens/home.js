@@ -31,18 +31,31 @@ export default function Home() {
             return;
         }
 
-        setNearbyUsers(nearbyUsersData.nearby_users);
+        //setNearbyUsers(nearbyUsersData.nearby_users);
+        updateNearbyUsers(nearbyUsersData.nearby_users);
         setUserProfile(profileData[0]);
         setLoading(false);
       }
       fetchData();
     }, [])
 
+    function updateNearbyUsers(nearbyUsers) {
+        const arr = nearbyUsers.map((user) => {
+            return (
+                {
+                    ...user,
+                    visible: true
+                }
+            )
+        });
+        setNearbyUsers(arr);
+    }
+
     return (
         <div className="page-home">
             {loading && <p>Loading...</p>}
             <Header name={userProfile?.general_info?.first_name} />
-            <SearchBar />
+            <SearchBar nearbyUsers={nearbyUsers} setNearbyUsers={setNearbyUsers} />
             <UserGrid users={nearbyUsers} userProfile={userProfile} />
             <Footer />
         </div>

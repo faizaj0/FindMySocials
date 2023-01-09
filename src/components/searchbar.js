@@ -2,7 +2,22 @@ import React, { Component }  from 'react';
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 
-export default function SearchBar() {
+export default function SearchBar({ nearbyUsers, setNearbyUsers }) {
+  
+  function handleChange(e) {
+    const searchString = e.target.value.toLowerCase();
+    const arr = nearbyUsers.map((user) => {
+      const userFirstName = user.general_info.first_name.toLowerCase();
+      return (
+        {
+          ...user,
+          visible: userFirstName.includes(searchString),
+        }
+      )
+    })
+    setNearbyUsers(arr);
+  }
+
   return (
     <div className="search-bar">
       <InputGroup>
@@ -14,11 +29,8 @@ export default function SearchBar() {
         <Input
           placeholder="Search..."
           size="md"
-          color = "white"
           variant='flushed'
-          onChange={(event) => {
-            // Handle the user's input
-          }}
+          onChange={handleChange}
         />
       </InputGroup>
     </div>
