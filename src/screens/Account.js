@@ -22,6 +22,7 @@ import {
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import AccountForm from "./AccountForm";
 
 
 export default function Account() {
@@ -34,7 +35,10 @@ export default function Account() {
   
   return (
     <div className="page-sign-up">
-      <Flex
+
+      <AccountForm />
+
+      {/*<Flex
         minH={"100vh"}
         align={"center"}
         justify={"center"}
@@ -110,7 +114,7 @@ export default function Account() {
           </Box>
 
         </Stack>
-      </Flex>
+      </Flex>*/}
     </div>
   );
 }
