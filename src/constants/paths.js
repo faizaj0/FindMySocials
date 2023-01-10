@@ -7,4 +7,5 @@ export const paths = {
     USER_DETAIL: '/user',
     USER_DETAIL_INDEX: '/user/:index',
     POLICY: '/privacy-policy',
+    ACCOUNT: '/account',
 }

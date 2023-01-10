@@ -10,6 +10,7 @@ import Home from  "./screens/Home";
 
 import { paths } from './constants/paths';
 import UserDetail from './screens/UserDetail';
+import Account from './screens/Account';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path={paths.SIGN_UP} element={<SignUp />} />
         <Route path={paths.USER_DETAIL} element={<UserDetail />} />
         <Route path={paths.USER_DETAIL_INDEX} element={<UserDetail />} />
+        <Route path={paths.ACCOUNT} element={<Account />} />
       </Routes>
     </BrowserRouter>
     </div>
