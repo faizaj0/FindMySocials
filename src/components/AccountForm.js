@@ -27,6 +27,7 @@ import AccountFormSocials from "./AccountFormSocials";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
+import AccountFormProfile from "./AccountFormProfile";
 
 
 export default function AccountForm() {
@@ -61,6 +62,9 @@ export default function AccountForm() {
                 </SwiperSlide>
                 <SwiperSlide>
                     <AccountFormSocials />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <AccountFormProfile />
                 </SwiperSlide>
             </Swiper>
 

@@ -2,10 +2,8 @@ import { useState } from "react";
 
 import { Box, Button, FormControl, FormLabel, Select, Stack, useColorModeValue, Input } from "@chakra-ui/react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function AccountFormGeneral() {
     const [firstName, setFirstName] = useState('');
