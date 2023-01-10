@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { Box, Button, Flex, Text, useColorMode, useDisclosure, VStack } from "@chakra-ui/react";
 import { SettingsIcon, StarIcon, SearchIcon, HamburgerIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
-import { MdOutlineAddLocationAlt } from 'react-icons/md'
+import { MdOutlineAddLocationAlt } from 'react-icons/md';
 import { IconButton } from "@chakra-ui/react";
+import { FaHome } from "react-icons/fa";
 import NavMenu from './NavMenu';
 import { paths } from '../constants/paths';
 
@@ -58,7 +59,7 @@ export default function Footer() {
                         color={'white'}
                         size="lg"
                         aria-label="Home"
-                        icon={<StarIcon />}
+                        icon={<FaHome />}
                     />
                     <Text size={'xs'} color='white'>Home</Text>
                 </Box>

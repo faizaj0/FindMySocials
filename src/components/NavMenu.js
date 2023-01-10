@@ -28,6 +28,10 @@ export default function NavMenu({ isOpen, onClose }) {
                             onClick={() => navigate(paths.HOME)}
                         />
                         <NavMenuButton
+                            label={'Privacy Policy'}
+                            onClick={() => navigate(paths.POLICY)}
+                        />
+                        <NavMenuButton
                             label={'Logout'}
                             onClick={() => navigate(paths.SIGN_OUT)}
                         />
