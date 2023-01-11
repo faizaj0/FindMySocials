@@ -144,7 +144,7 @@ export default function SignUp() {
 
               <PasswordInput value={password} setValue={setPassword} label={'Password'} />
               <PasswordInput value={passwordConfirm} setValue={setPasswordConfirm} label={'Confirm Password'} />
-              <Text size={'xs'} color={'red'} textAlign={'left'}>{passwordError}</Text>
+              <Text size={'xs'} color={'red'} textAlign={'left'}>{password && passwordError}</Text>
               
 
               <Stack spacing={10} pt={2}>
