@@ -21,9 +21,6 @@ import {
 } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import InputMask from 'react-input-mask';
-import ReactInputMask from "react-input-mask";
-
 
 export default function SignUp() {
 
