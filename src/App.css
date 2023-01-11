@@ -124,3 +124,25 @@
 .swipebuttons {
   justify-content: flex-end;
 }
+
+.swiper-pagination-bullet-active {
+  background-color: #000 !important;
+
+}
+.swiper-pagination-bullet {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50%;
+ 
+}
+.calender{
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 100px;
+  background-color: white;
+  height: 22px;  
+}
+
+.rmdp-calendar-container-mobile{
+  background-color: transparent !important;
+}
