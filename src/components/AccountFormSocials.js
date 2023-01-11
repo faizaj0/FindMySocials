@@ -11,6 +11,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Text,
 } from "@chakra-ui/react";
 
 import {
@@ -41,6 +42,12 @@ export default function AccountFormSocials() {
       height={"100%"}
     >
       <Stack spacing={4}  py={7}  minH={'sm'}>
+        {
+        <Text size={'large'} fontWeight={'bold'}>
+            Social Links
+        </Text>
+        }
+
         <FormControl id="instagram" isRequired>
           <InputGroup>
             <InputLeftElement pointerEvents="none" children={<FaInstagram />} />

@@ -22,9 +22,14 @@
   color: black;
 }
 
-.swiper-slide {
+.page-sign-up .swiper-slide {
+  height: 70vh !important;
   padding-left: 0.5em;
   padding-right: 0.5em;
+}
+.page-sign-up .swiper-pagination {
+  position: absolute;
+  bottom: 5% !important;
 }
 
 .profileImage {
