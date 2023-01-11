@@ -22,6 +22,7 @@ import {
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { paths } from "../constants/paths";
+import PasswordInput from "../components/PasswordInput";
 
 export default function SignUp() {
 
@@ -29,8 +30,12 @@ export default function SignUp() {
 
   const [message, setMessage] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
+  
   const [password, setPassword] = useState("");
-  const [passwordRepeat, setPasswordRepeat] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [passwordValid, setPasswordValid] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -62,6 +67,29 @@ export default function SignUp() {
       setEmailValid(false);
     }
   }, [email])
+
+  useEffect(() => {
+    const uppercaseRE = /[A-Z]/;
+    const lowercaseRE = /[a-z]/;
+    const digitRE = /[0-9]/;
+
+    if (password != passwordConfirm) {
+      // Confirm pws match
+      setPasswordValid(false);
+      setPasswordError('Passwords do not match');
+    } else if (password.length < 8) {
+      // Confirm pw long enough
+      setPasswordValid(false);
+      setPasswordError('Password too short');
+    } else if (!uppercaseRE.test(password) || !lowercaseRE.test(password) || !digitRE.test(password)) {
+      // Confirm pw has uppercase, lowercase, digit
+      setPasswordValid(false);
+      setPasswordError('Password must contain a lowercase letter, an uppercase letter, and a digit');
+    } else {
+      setPasswordValid(true);
+      setPasswordError('');
+    }
+  }, [password, passwordConfirm])
 
   return (
     <div className="page-sign-up">
@@ -108,28 +136,17 @@ export default function SignUp() {
                 <Text size={'xs'} color={'red'} textAlign={'left'}>{email && !emailValid && 'Incorrect Email'}</Text>
               </FormControl>
 
-              <FormControl id="email" isRequired>
+              <FormControl id="postcode" isRequired>
                 <FormLabel>Postcode</FormLabel>
                 <Input type="text" placeholder="Postcode" value={postcode} onChange={(e) => setPostcode(e.target.value.toUpperCase())} />
                 <Text size={'xs'} color={'red'} textAlign={'left'}>{postcode && !postcodeValid && 'Incorrect Postcode'}</Text>
               </FormControl>
 
-              <FormControl id="password" isRequired>
-                <FormLabel>Password</FormLabel>
-                <InputGroup>
-                  <Input type={showPassword ? "text" : "password"} />
-                  <InputRightElement h={"full"}>
-                    <Button
-                      variant={"ghost"}
-                      onClick={() =>
-                        setShowPassword((showPassword) => !showPassword)
-                      }
-                    >
-                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-              </FormControl>
+              <PasswordInput value={password} setValue={setPassword} label={'Password'} />
+              <PasswordInput value={passwordConfirm} setValue={setPasswordConfirm} label={'Confirm Password'} />
+              <Text size={'xs'} color={'red'} textAlign={'left'}>{passwordError}</Text>
+              
+
               <Stack spacing={10} pt={2}>
                 <Button
                   className="btn-grad"
