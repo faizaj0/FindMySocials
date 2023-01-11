@@ -2,16 +2,10 @@ import { useState } from "react";
 
 import { Box, Button, FormControl, FormLabel, Select, Stack, useColorModeValue, Input } from "@chakra-ui/react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
-import DatePicker from "react-datepicker";
-
 export default function AccountFormSocials() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [gender, setGender] = useState('');
-    const [dob, setDOB] = useState(new Date);
+    const [facebook, setFacebook] = useState('');
+    const [twitter, setTwitter] = useState('');
+    const [instagram, setInstagram] = useState('');
 
     return (
         <Box
@@ -24,16 +18,30 @@ export default function AccountFormSocials() {
             <Stack spacing={4}>
 
                 <FormControl id="facebook" isRequired>
-                    <Input type="text" placeholder="Facebook" value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
+                    <Input
+                        type="text"
+                        placeholder="Facebook"
+                        value={facebook}
+                        onChange={(e) => { setFacebook(e.target.value) }}
+                    />
                 </FormControl>
 
                 <FormControl id="twitter" isRequired>
-                    <Input type="text" placeholder="Twitter" value={lastName} onChange={(e) => { setLastName(e.target.value) }} />
+                    <Input
+                        type="text"
+                        placeholder="Twitter"
+                        value={twitter}
+                        onChange={(e) => { setTwitter(e.target.value) }}
+                    />
                 </FormControl>
 
-                <FormControl id="dob" isRequired>
-                    <FormLabel>Date of Birth</FormLabel>
-                    <DatePicker selected={dob} onChange={(date) => setDOB(date)} />
+                <FormControl id="instagram" isRequired>
+                    <Input
+                        type="text"
+                        placeholder="Instagram"
+                        value={instagram}
+                        onChange={(e) => { setInstagram(e.target.value) }}
+                    />
                 </FormControl>
 
                 <Stack spacing={10} pt={2}>
@@ -45,7 +53,7 @@ export default function AccountFormSocials() {
                         _hover={{
                             bg: "blue.500",
                         }}
-                        onChange={() => console.log('submit')}
+                        onClick={() => console.log('submit')}
                     >
                         Submit
                     </Button>
