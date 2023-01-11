@@ -30,6 +30,7 @@ import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
 import "swiper/css";
+import AccountFormProfile from "./AccountFormProfile";
 
 
 export default function AccountForm() {
@@ -70,6 +71,9 @@ export default function AccountForm() {
                 </SwiperSlide>
                 <SwiperSlide style={{paddingLeft:"10px"}}>
                     <AccountFormSocials />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <AccountFormProfile />
                 </SwiperSlide>
             </Swiper>
 

@@ -17,14 +17,14 @@ import {
 } from '@chakra-ui/react';
 import { handleReq, setUserToken } from '../constants/utils';
 import { apiURL } from '../constants/config';
-import { paths } from '../constants/paths';
-
+import { apiPaths, paths } from '../constants/paths';
 
 export default function SignInForm() {
   const navigate = useNavigate();
   const [rememberMe, setRememberMe] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [postcode, setPostcode] = useState('');
   const [emailValid, setEmailValid] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function SignInForm() {
   }, [email])
 
   async function handleSubmit() {
-    const url = apiURL + "/dj/api/users/token-auth/";
+    const url = apiURL + apiPaths.TOKEN_AUTH;
     const body = {
       username: email,
       password: password,
@@ -111,7 +111,7 @@ export default function SignInForm() {
               </Stack>
               <Text fontSize={'md'} color={'gray.600'}>
                 Don't have an account?
-                <div onClick={() => navigate("/signup")}>
+                <div onClick={() => navigate(paths.SIGN_UP)}>
                   <p className="signUpLink"> <b>Sign Up</b></p>
                 </div>
               </Text>

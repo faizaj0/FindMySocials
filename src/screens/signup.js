@@ -1,6 +1,6 @@
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { paths } from "../constants/paths";
 
 export default function SignUp() {
 
@@ -28,16 +29,40 @@ export default function SignUp() {
 
   const [message, setMessage] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState('');
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [emailValid, setEmailValid] = useState(false);
   const [dob, setDOB] = useState(new Date());
   const [showPassword, setShowPassword] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [emailValid, setEmailValid] = useState(false);
+
+  const [postcode, setPostcode] = useState('');
+  const [postcodeValid, setPostcodeValid] = useState(false);
   
+
+  useEffect(() => {
+    // Official UK postcode regex (with added word boundaries and string end)
+    const postcodeRE = /\b([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})\b$/;
+
+    if (postcode.match(postcodeRE)) {
+      setPostcodeValid(true);
+    } else {
+      setPostcodeValid(false);
+    }
+  }, [postcode])
+
+  useEffect(() => {
+    if (email.includes('@')) {
+      setEmailValid(true);
+    } else {
+      setEmailValid(false);
+    }
+  }, [email])
+
   return (
     <div className="page-sign-up">
       <Flex
@@ -76,10 +101,19 @@ export default function SignUp() {
                   </FormControl>
                 </Box>
               </HStack>
+
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input type="email" postcode={'Email'} value={email} onChange={(e) => setEmail(e.target.value)} />
+                <Text size={'xs'} color={'red'} textAlign={'left'}>{email && !emailValid && 'Incorrect Email'}</Text>
               </FormControl>
+
+              <FormControl id="email" isRequired>
+                <FormLabel>Postcode</FormLabel>
+                <Input type="text" placeholder="Postcode" value={postcode} onChange={(e) => setPostcode(e.target.value.toUpperCase())} />
+                <Text size={'xs'} color={'red'} textAlign={'left'}>{postcode && !postcodeValid && 'Incorrect Postcode'}</Text>
+              </FormControl>
+
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
@@ -112,7 +146,7 @@ export default function SignUp() {
               <Stack pt={6}>
                 <Text align={"center"} fontSize={"md"} color={"gray.600"}>
                   Already a user?
-                  <div onClick={() => navigate("/signin")}>
+                  <div onClick={() => navigate(paths.SIGN_IN)}>
                     <p className="signUpLink">
                       {" "}
                       <b>Sign In</b>

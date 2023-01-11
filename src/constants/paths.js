@@ -9,3 +9,7 @@ export const paths = {
     POLICY: '/privacy-policy',
     ACCOUNT: '/account',
 }
+
+export const apiPaths = {
+    TOKEN_AUTH: "/dj/api/users/token-auth/",
+}

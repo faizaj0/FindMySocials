@@ -25,7 +25,7 @@ export default function NavMenu({ isOpen, onClose }) {
                         />
                         <NavMenuButton
                             label={'Settings'}
-                            onClick={() => navigate(paths.HOME)}
+                            onClick={() => navigate(paths.ACCOUNT)}
                         />
                         <NavMenuButton
                             label={'Privacy Policy'}
