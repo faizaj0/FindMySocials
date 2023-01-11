@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -25,13 +25,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import AccountFormGeneral from "./AccountFormGeneral";
 import AccountFormSocials from "./AccountFormSocials";
 
+
+import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css/pagination';
 import "swiper/css";
 import AccountFormProfile from "./AccountFormProfile";
 
 
 export default function AccountForm() {
   const navigate = useNavigate();
+  const swiperRef = useRef(null);
   
   return (
     <Flex
@@ -40,7 +44,7 @@ export default function AccountForm() {
         justify={"center"}
         bgGradient={"linear(orange.100, purple.300)"}
     >
-        <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        <Stack spacing={8} mx={"100%"} maxW={"sm"} py={12} px={6} minH={'lg'}>
 
             <Stack align={"center"}>
             <Heading fontSize={"4xl"} textAlign={"center"}>
@@ -52,15 +56,20 @@ export default function AccountForm() {
             </Stack>
 
             <Swiper
-                spaceBetween={50}
+                spaceBetween={0}
                 slidesPerView={1}
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)}
+                pagination={{
+                    dynamicBullets: true,
+                    clickable: true,
+                  }}
+                  modules={[Pagination]}
             >
-                <SwiperSlide>
+                <SwiperSlide style={{paddingRight:"10px"}}>
                     <AccountFormGeneral />
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide style={{paddingLeft:"10px"}}>
                     <AccountFormSocials />
                 </SwiperSlide>
                 <SwiperSlide>
