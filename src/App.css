@@ -22,6 +22,11 @@
   color: black;
 }
 
+.swiper-slide {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
 .profileImage {
   position: absolute;
   inset: 0px;
