@@ -13,6 +13,7 @@ export default function PasswordInput({ value, setValue, label }) {
                     type={showPassword ? "text" : "password"}
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
+                    placeholder={label}
                 />
                 <InputRightElement h={"full"}>
                 <Button

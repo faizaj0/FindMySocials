@@ -23,6 +23,9 @@ import {
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { paths } from "../constants/paths";
 import PasswordInput from "../components/PasswordInput";
+import SelectInput from "../components/SelectInput";
+import { genderOptions } from "../constants/config";
+import DatepickerInput from "../components/DatepickerInput";
 
 export default function SignUp() {
 
@@ -39,6 +42,8 @@ export default function SignUp() {
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [gender, setGender] = useState('');
+
   const [dob, setDOB] = useState(new Date());
   const [showPassword, setShowPassword] = useState(false);
 
@@ -119,20 +124,25 @@ export default function SignUp() {
                 <Box>
                   <FormControl id="firstName" isRequired>
                     <FormLabel>First Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                   </FormControl>
                 </Box>
                 <Box>
-                  <FormControl id="lastName">
+                  <FormControl id="lastName" isRequired>
                     <FormLabel>Last Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                   </FormControl>
                 </Box>
               </HStack>
 
+              <FormControl id="username" isRequired>
+                <FormLabel>Username</FormLabel>
+                <Input type="email" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+              </FormControl>
+
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" postcode={'Email'} value={email} onChange={(e) => setEmail(e.target.value)} />
+                <Input type="email" placeholder={'Email'} value={email} onChange={(e) => setEmail(e.target.value)} />
                 <Text size={'xs'} color={'red'} textAlign={'left'}>{email && !emailValid && 'Incorrect Email'}</Text>
               </FormControl>
 
@@ -141,6 +151,16 @@ export default function SignUp() {
                 <Input type="text" placeholder="Postcode" value={postcode} onChange={(e) => setPostcode(e.target.value.toUpperCase())} />
                 <Text size={'xs'} color={'red'} textAlign={'left'}>{postcode && !postcodeValid && 'Incorrect Postcode'}</Text>
               </FormControl>
+
+              <DatepickerInput date={dob} setDate={setDOB} label={'Date of Birth'} />
+
+              <SelectInput
+                value={gender}
+                setValue={setGender}
+                placeholder={'Select Gender'}
+                label={'Gender'}
+                options={genderOptions}
+              />
 
               <PasswordInput value={password} setValue={setPassword} label={'Password'} />
               <PasswordInput value={passwordConfirm} setValue={setPasswordConfirm} label={'Confirm Password'} />

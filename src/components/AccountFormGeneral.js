@@ -11,11 +11,9 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
-import DatePicker from "react-multi-date-picker";
-import "react-multi-date-picker/styles/layouts/mobile.css";
+import SelectInput from "./SelectInput";
+import { genderOptions } from "../constants/config";
+import DatepickerInput from "./DatepickerInput";
 
 export default function AccountFormGeneral() {
   const [firstName, setFirstName] = useState("");
@@ -56,32 +54,15 @@ export default function AccountFormGeneral() {
           />
         </FormControl>
 
-        <FormControl id="dob" isRequired>
-          <FormLabel>Date of Birth</FormLabel>
-          <DatePicker
-            className="rmdp-mobile"
-            selected={dob}
-            onChange={(date) => setDOB(date)}
-            inputClass = "calender"
-          />
-        </FormControl>
+        <DatepickerInput date={dob} setDate={setDOB} label={'Date of Birth'} />
 
-        <FormControl id="password" isRequired>
-          <FormLabel>Gender</FormLabel>
-          <Select
-            placeholder="Select Gender"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-          >
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-            <option value="TMM">Transgender Male</option>
-            <option value="TMF">Transgender Female</option>
-            <option value="NC">Gender Variant/Non-Conforming</option>
-            <option value="NL">Other/Not Listed</option>
-            <option value="NA">Prefer Not to Say</option>
-          </Select>
-        </FormControl>
+        <SelectInput
+          value={gender}
+          setValue={setGender}
+          placeholder={'Select Gender'}
+          label={'Gender'}
+          options={genderOptions}
+        />
 
         <Stack spacing={10} pt={2}>
           <Button
