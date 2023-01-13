@@ -100,7 +100,9 @@ export default function SignUpForm() {
         lastName: lastName,
         dob: dob.unix,
         gender: gender,
+        postcode: postcode,
       }
+      console.log(body);
       const data = await handleReq(apiURL + "/dj/api/users/signup", 'POST', body, navigate, false);
       console.log('Result: ', data);
 
