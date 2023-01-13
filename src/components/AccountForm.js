@@ -19,8 +19,6 @@ import {
   Select,
 } from "@chakra-ui/react";
 
-import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 import AccountFormGeneral from "./AccountFormGeneral";
 import AccountFormSocials from "./AccountFormSocials";
@@ -31,7 +29,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
 import "swiper/css";
 import AccountFormProfile from "./AccountFormProfile";
-
 
 export default function AccountForm() {
   const navigate = useNavigate();

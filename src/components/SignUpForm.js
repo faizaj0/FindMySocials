@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,30 +7,28 @@ import {
   FormControl,
   FormLabel,
   Input,
-  InputGroup,
   HStack,
-  InputRightElement,
   Stack,
   Button,
   Heading,
   Text,
   useColorModeValue,
-  Link,
 } from "@chakra-ui/react";
 
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { paths } from "../constants/paths";
-import PasswordInput from "../components/PasswordInput";
-import SelectInput from "../components/SelectInput";
-import { genderOptions } from "../constants/config";
 import DatepickerInput from "../components/DatepickerInput";
 
-export default function SignUp() {
+import PasswordInput from "../components/PasswordInput";
+import SelectInput from "../components/SelectInput";
 
+import { paths } from "../constants/paths";
+import { handleReq } from "../constants/utils";
+import { apiURL, genderOptions } from "../constants/config";
+
+
+export default function SignUpForm() {
   const navigate = useNavigate();
 
   const [message, setMessage] = useState('');
-  const [rememberMe, setRememberMe] = useState(true);
   
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -45,14 +41,12 @@ export default function SignUp() {
   const [gender, setGender] = useState('');
 
   const [dob, setDOB] = useState(new Date());
-  const [showPassword, setShowPassword] = useState(false);
 
   const [email, setEmail] = useState('');
   const [emailValid, setEmailValid] = useState(false);
 
   const [postcode, setPostcode] = useState('');
   const [postcodeValid, setPostcodeValid] = useState(false);
-  
 
   useEffect(() => {
     // Official UK postcode regex (with added word boundaries and string end)
@@ -96,14 +90,38 @@ export default function SignUp() {
     }
   }, [password, passwordConfirm])
 
+  function handleSubmit() {
+    const fetchData = async () => {
+      const body = {
+        username: username,
+        password: password,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        dob: dob.unix,
+        gender: gender,
+      }
+      const data = await handleReq(apiURL + "/dj/api/users/signup", 'POST', body, navigate, false);
+      console.log('Result: ', data);
+
+      if (!data) {
+          console.log('Sign Up response data Could Not Be Retrieved');
+          return;
+      }
+
+      navigate(paths.SIGN_IN);
+    }
+    fetchData();
+  }
+
   return (
-    <div className="page-sign-up">
       <Flex
         minH={"100vh"}
         align={"center"}
         justify={"center"}
         bgGradient={"linear(orange.100, purple.300)"}
       >
+        
         <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
           <Stack align={"center"}>
             <Heading fontSize={"4xl"} textAlign={"center"}>
@@ -119,7 +137,9 @@ export default function SignUp() {
             boxShadow={"lg"}
             p={8}
           >
+
             <Stack spacing={4}>
+
               <HStack>
                 <Box>
                   <FormControl id="firstName" isRequired>
@@ -171,6 +191,7 @@ export default function SignUp() {
                 <Button
                   className="btn-grad"
                   loadingText="Submitting"
+                  onClick={handleSubmit}
                   size="lg"
                   color={"white"}
                   _hover={{
@@ -180,6 +201,7 @@ export default function SignUp() {
                   Sign up
                 </Button>
               </Stack>
+
               <Stack pt={6}>
                 <Text align={"center"} fontSize={"md"} color={"gray.600"}>
                   Already a user?
@@ -191,10 +213,10 @@ export default function SignUp() {
                   </div>
                 </Text>
               </Stack>
+
             </Stack>
           </Box>
         </Stack>
       </Flex>
-    </div>
   );
 }

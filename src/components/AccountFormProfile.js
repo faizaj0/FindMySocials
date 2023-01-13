@@ -11,6 +11,7 @@ export default function AccountFormProfile() {
             bg={useColorModeValue("white", "gray.700")}
             boxShadow={"lg"}
             p={8}
+            pt={0}
             height={'100%'}
         >
             <Stack spacing={4}>

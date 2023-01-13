@@ -25,9 +25,7 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import DatePicker from "react-datepicker";
-
-export default function AccountFormSocials() {
+export default function AccountFormSocials({ page }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
@@ -39,11 +37,12 @@ export default function AccountFormSocials() {
       bg={useColorModeValue("white", "gray.700")}
       boxShadow={"lg"}
       p={8}
+      pt={0}
       height={"100%"}
     >
       <Stack spacing={4}  py={7}  minH={'sm'}>
         {
-        <Text size={'large'} fontWeight={'bold'}>
+        <Text size={'large'} fontWeight={'bold'} textAlign={'center'}>
             Social Links
         </Text>
         }
@@ -127,11 +126,12 @@ export default function AccountFormSocials() {
             _hover={{
               bg: "blue.500",
             }}
-            onChange={() => console.log("submit")}
+            onClick={() => console.log('submit')}
           >
             Submit
           </Button>
         </Stack>
+
       </Stack>
     </Box>
   );
