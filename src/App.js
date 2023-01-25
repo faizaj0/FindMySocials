@@ -7,6 +7,7 @@ import SignIn from "./screens/SignIn"
 import SignOut from "./screens/SignOut";
 import SignUp from "./screens/SignUp";
 import Home from  "./screens/Home";
+import OnBoard from "./screens/OnBoard";
 
 import { paths } from './constants/paths';
 import UserDetail from './screens/UserDetail';
@@ -18,6 +19,7 @@ function App() {
     <div className='App'>
     <BrowserRouter>
       <Routes>
+        <Route path={paths.ONBOARD} element={<OnBoard/>} />
         <Route path={paths.ROOT} element={<Home />} index />
         <Route path={paths.HOME} element={<Home />} index />
         <Route path={paths.SIGN_IN} element={<SignIn />} />

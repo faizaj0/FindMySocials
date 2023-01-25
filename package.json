@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@capacitor/core": "^4.6.2",
+    "@capacitor/geolocation": "^4.1.0",
     "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/input": "^2.0.14",
     "@chakra-ui/react": "^2.4.3",
@@ -47,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^4.6.2"
   }
 }
