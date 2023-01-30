@@ -49,7 +49,7 @@
 }
 
 .footer {
-  z-index:2;
+  z-index: 2;
 }
 
 .userGrid {
@@ -57,20 +57,25 @@
 }
 
 .btn-grad {
-  background-image: linear-gradient(to right, #FEAC5E 0%, #C779D0  51%, #FEAC5E  100%) !important;
+  background-image: linear-gradient(
+    to right,
+    #feac5e 0%,
+    #c779d0 51%,
+    #feac5e 100%
+  ) !important;
   margin: 10px;
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;            
+  color: white;
   border-radius: 20px !important;
 }
 
 .flex-container {
   display: flex;
-  padding:0px;
+  padding: 0px;
   justify-content: center;
 }
 
@@ -88,7 +93,6 @@
 .swiper h1 {
   font-weight: 700;
   font-size: 30px;
-  
 }
 
 .swiper p {
@@ -98,7 +102,6 @@
 .swiper-slide {
   margin-left: 0px !important;
   margin-right: 0px !important;
-  
 }
 
 .userdetail {
@@ -118,7 +121,6 @@
   align-content: center;
   margin: 20px;
   opacity: 0.85;
-   
 }
 
 .socialmodal {
@@ -127,7 +129,7 @@
 
 /*.socialbutton {
   position: absolute;
-  padding: 50px !important; 
+  padding: 50px !important;
 }
 */
 
@@ -137,22 +139,120 @@
 
 .swiper-pagination-bullet-active {
   background-color: #000 !important;
-
 }
 .swiper-pagination-bullet {
   width: 16px !important;
   height: 16px !important;
   border-radius: 50%;
- 
 }
-.calender{
+.calender {
   border-radius: 8px;
   padding: 10px;
   min-width: 100px;
   background-color: white;
-  height: 22px;  
+  height: 22px;
 }
 
-.rmdp-calendar-container-mobile{
+.rmdp-calendar-container-mobile {
   background-color: transparent !important;
+}
+
+/*================================================
+Preloader Area CSS
+=================================================*/
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  text-align: center;
+  -webkit-transition: 0.9s;
+  transition: 0.9s;
+}
+
+.preloader .spinner {
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 42%;
+  -webkit-transform: translateY(-42%);
+  transform: translateY(-42%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.preloader::before,
+.preloader::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: linear-gradient(
+    to right,
+    #feac5e 0%,
+    #c779d0 100%
+  ) !important;
+  background-size: cover;
+  -webkit-transition: 0.9s;
+  transition: 0.9s;
+}
+
+.preloader::after {
+  left: auto;
+  right: 0;
+}
+
+.preloader.preloader-deactivate {
+  visibility: hidden;
+}
+
+.preloader.preloader-deactivate::after,
+.preloader.preloader-deactivate::before {
+  width: 0;
+}
+
+.preloader.preloader-deactivate .spinner {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
 }
