@@ -125,11 +125,11 @@
   opacity: 0.5;
 }
 
-.socialbutton {
+/*.socialbutton {
   position: absolute;
-  padding: 50px !important;
- 
+  padding: 50px !important; 
 }
+*/
 
 .swipebuttons {
   justify-content: flex-end;
