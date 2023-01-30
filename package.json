@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@capacitor/core": "^4.6.2",
+    "@capacitor/geolocation": "^4.1.0",
     "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/input": "^2.0.14",
     "@chakra-ui/react": "^2.4.3",
@@ -13,10 +15,12 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "framer-motion": "^7.6.19",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-multi-date-picker": "^3.3.4",
     "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1",
     "swiper": "^8.4.5",
@@ -46,5 +50,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3000"
+  "devDependencies": {
+    "@capacitor/cli": "^4.6.2"
+  }
 }

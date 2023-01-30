@@ -24,14 +24,17 @@ export default function Home() {
   
         if (!nearbyUsersData) {
             console.log('Nearby Users Data Could Not Be Retrieved');
+            setLoading(false);
             return;
         }
         if (!profileData) {
             console.log('User Profile Data Could Not Be Retrieved');
+            setLoading(false);
             return;
         }
 
         //setNearbyUsers(nearbyUsersData.nearby_users);
+        console.log('Works');
         updateNearbyUsers(nearbyUsersData.nearby_users);
         setUserProfile(profileData[0]);
         setLoading(false);
@@ -53,7 +56,7 @@ export default function Home() {
 
     return (
         <div className="page-home">
-            {loading && <p>Loading...</p>}
+            {loading &&  <div class="preloader"><div class="spinner"></div></div>}
             <Header name={userProfile?.general_info?.first_name} />
             <SearchBar nearbyUsers={nearbyUsers} setNearbyUsers={setNearbyUsers} />
             <UserGrid users={nearbyUsers} userProfile={userProfile} />

@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,40 +7,46 @@ import {
   FormControl,
   FormLabel,
   Input,
-  InputGroup,
   HStack,
-  InputRightElement,
   Stack,
   Button,
   Heading,
   Text,
   useColorModeValue,
-  Link,
 } from "@chakra-ui/react";
 
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import DatepickerInput from "../components/DatepickerInput";
+
+import PasswordInput from "../components/PasswordInput";
+import SelectInput from "../components/SelectInput";
+
 import { paths } from "../constants/paths";
+import { handleReq } from "../constants/utils";
+import { apiURL, genderOptions } from "../constants/config";
 
-export default function SignUp() {
 
+export default function SignUpForm() {
   const navigate = useNavigate();
 
   const [message, setMessage] = useState('');
-  const [rememberMe, setRememberMe] = useState(true);
+  
   const [password, setPassword] = useState("");
-  const [passwordRepeat, setPasswordRepeat] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [passwordValid, setPasswordValid] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [gender, setGender] = useState('');
+
   const [dob, setDOB] = useState(new Date());
-  const [showPassword, setShowPassword] = useState(false);
 
   const [email, setEmail] = useState('');
   const [emailValid, setEmailValid] = useState(false);
 
   const [postcode, setPostcode] = useState('');
   const [postcodeValid, setPostcodeValid] = useState(false);
-  
 
   useEffect(() => {
     // Official UK postcode regex (with added word boundaries and string end)
@@ -63,14 +67,63 @@ export default function SignUp() {
     }
   }, [email])
 
+  useEffect(() => {
+    const uppercaseRE = /[A-Z]/;
+    const lowercaseRE = /[a-z]/;
+    const digitRE = /[0-9]/;
+
+    if (password != passwordConfirm) {
+      // Confirm pws match
+      setPasswordValid(false);
+      setPasswordError('Passwords do not match');
+    } else if (password.length < 8) {
+      // Confirm pw long enough
+      setPasswordValid(false);
+      setPasswordError('Password too short');
+    } else if (!uppercaseRE.test(password) || !lowercaseRE.test(password) || !digitRE.test(password)) {
+      // Confirm pw has uppercase, lowercase, digit
+      setPasswordValid(false);
+      setPasswordError('Password must contain a lowercase letter, an uppercase letter, and a digit');
+    } else {
+      setPasswordValid(true);
+      setPasswordError('');
+    }
+  }, [password, passwordConfirm])
+
+  function handleSubmit() {
+    const fetchData = async () => {
+      const body = {
+        username: username,
+        password: password,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        dob: dob.unix,
+        gender: gender,
+        postcode: postcode,
+      }
+      console.log(body);
+      const data = await handleReq(apiURL + "/dj/api/users/signup", 'POST', body, navigate, false);
+      console.log('Result: ', data);
+
+      if (!data) {
+          console.log('Sign Up response data Could Not Be Retrieved');
+          return;
+      }
+
+      navigate(paths.SIGN_IN);
+    }
+    fetchData();
+  }
+
   return (
-    <div className="page-sign-up">
       <Flex
         minH={"100vh"}
         align={"center"}
         justify={"center"}
         bgGradient={"linear(orange.100, purple.300)"}
       >
+        
         <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
           <Stack align={"center"}>
             <Heading fontSize={"4xl"} textAlign={"center"}>
@@ -86,54 +139,61 @@ export default function SignUp() {
             boxShadow={"lg"}
             p={8}
           >
+
             <Stack spacing={4}>
+
               <HStack>
                 <Box>
                   <FormControl id="firstName" isRequired>
                     <FormLabel>First Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                   </FormControl>
                 </Box>
                 <Box>
-                  <FormControl id="lastName">
+                  <FormControl id="lastName" isRequired>
                     <FormLabel>Last Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                   </FormControl>
                 </Box>
               </HStack>
 
-              <FormControl id="email" isRequired>
-                <FormLabel>Email address</FormLabel>
-                <Input type="email" postcode={'Email'} value={email} onChange={(e) => setEmail(e.target.value)} />
-                <Text size={'xs'} color={'red'} textAlign={'left'}>{email && !emailValid && 'Incorrect Email'}</Text>
+              <FormControl id="username" isRequired>
+                <FormLabel>Username</FormLabel>
+                <Input type="email" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
               </FormControl>
 
               <FormControl id="email" isRequired>
+                <FormLabel>Email address</FormLabel>
+                <Input type="email" placeholder={'Email'} value={email} onChange={(e) => setEmail(e.target.value)} />
+                <Text size={'xs'} color={'red'} textAlign={'left'}>{email && !emailValid && 'Incorrect Email'}</Text>
+              </FormControl>
+
+              <FormControl id="postcode" isRequired>
                 <FormLabel>Postcode</FormLabel>
                 <Input type="text" placeholder="Postcode" value={postcode} onChange={(e) => setPostcode(e.target.value.toUpperCase())} />
                 <Text size={'xs'} color={'red'} textAlign={'left'}>{postcode && !postcodeValid && 'Incorrect Postcode'}</Text>
               </FormControl>
 
-              <FormControl id="password" isRequired>
-                <FormLabel>Password</FormLabel>
-                <InputGroup>
-                  <Input type={showPassword ? "text" : "password"} />
-                  <InputRightElement h={"full"}>
-                    <Button
-                      variant={"ghost"}
-                      onClick={() =>
-                        setShowPassword((showPassword) => !showPassword)
-                      }
-                    >
-                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-              </FormControl>
+              <DatepickerInput date={dob} setDate={setDOB} label={'Date of Birth'} />
+
+              <SelectInput
+                value={gender}
+                setValue={setGender}
+                placeholder={'Select Gender'}
+                label={'Gender'}
+                options={genderOptions}
+              />
+
+              <PasswordInput value={password} setValue={setPassword} label={'Password'} />
+              <PasswordInput value={passwordConfirm} setValue={setPasswordConfirm} label={'Confirm Password'} />
+              <Text size={'xs'} color={'red'} textAlign={'left'}>{password && passwordError}</Text>
+              
+
               <Stack spacing={10} pt={2}>
                 <Button
                   className="btn-grad"
                   loadingText="Submitting"
+                  onClick={handleSubmit}
                   size="lg"
                   color={"white"}
                   _hover={{
@@ -143,6 +203,7 @@ export default function SignUp() {
                   Sign up
                 </Button>
               </Stack>
+
               <Stack pt={6}>
                 <Text align={"center"} fontSize={"md"} color={"gray.600"}>
                   Already a user?
@@ -154,10 +215,10 @@ export default function SignUp() {
                   </div>
                 </Text>
               </Stack>
+
             </Stack>
           </Box>
         </Stack>
       </Flex>
-    </div>
   );
 }

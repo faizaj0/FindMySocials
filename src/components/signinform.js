@@ -18,27 +18,21 @@ import {
 import { handleReq, setUserToken } from '../constants/utils';
 import { apiURL } from '../constants/config';
 import { apiPaths, paths } from '../constants/paths';
+import PasswordInput from './PasswordInput';
 
 export default function SignInForm() {
   const navigate = useNavigate();
-  const [rememberMe, setRememberMe] = useState(true);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [postcode, setPostcode] = useState('');
-  const [emailValid, setEmailValid] = useState(false);
 
-  useEffect(() => {
-      if (email.includes("@")) {
-          setEmailValid(true);
-      } else {
-          setEmailValid(false);
-      }
-  }, [email])
+  const [rememberMe, setRememberMe] = useState(true);
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {console.log(rememberMe)}, [rememberMe])
 
   async function handleSubmit() {
     const url = apiURL + apiPaths.TOKEN_AUTH;
     const body = {
-      username: email,
+      username: username,
       password: password,
     };
     const method = 'POST';
@@ -80,25 +74,31 @@ export default function SignInForm() {
             p={8}
           >
             <Stack spacing={4}>
+
               <FormControl id="email">
                 <FormLabel>
-                  Email address
+                  Username
                 </FormLabel>
-                <Input type="email" onChange={(e) => setEmail(e.target.value)} />
+                <Input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder={'Username'}
+                />
               </FormControl>
-              <FormControl id="password">
-                <FormLabel>
-                  Password
-                </FormLabel>
-                <Input type="password" onChange={(e) => setPassword(e.target.value)} />
-              </FormControl>
+
+              <PasswordInput value={password} setValue={setPassword} label={'Password'} />
+              
               <Stack spacing={10}>
                 <Stack
                   direction={{ base: 'column', sm: 'row' }}
                   align={'start'}
                   justify={'space-between'}
                 >
-                  <Checkbox>
+                  <Checkbox
+                    isChecked={rememberMe}
+                    onChange={() => setRememberMe(!rememberMe)}
+                  >
                     Remember me
                   </Checkbox>
                   <Link color={'blue.400'}>

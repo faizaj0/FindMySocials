@@ -59,7 +59,7 @@ export default function SocialsLinks({ user }) {
                 }
                 {twitter &&
                     <Button
-                        classname='socialbutton'
+                        className='socialbutton'
                         colorScheme="twitter"
                         leftIcon={<FaTwitter/>}
                         onClick={() => window.location.href = twitter.url}
@@ -69,7 +69,7 @@ export default function SocialsLinks({ user }) {
                 }
                 {instagram &&
                     <Button
-                        classname='socialbutton'
+                        className='socialbutton'
                         colorScheme="pink"
                         leftIcon={<FaInstagram/>}
                         onClick={() => window.location.href = instagram.url}
@@ -79,7 +79,7 @@ export default function SocialsLinks({ user }) {
                 }
                 {facebook &&
                     <Button
-                        classname='socialbutton'
+                        className='socialbutton'
                         colorScheme="facebook"
                         leftIcon={<FaFacebook/>}
                         onClick={() => window.location.href = facebook.url}
@@ -89,7 +89,7 @@ export default function SocialsLinks({ user }) {
                 }
                 {snapchat &&
                     <Button
-                        classname='socialbutton'
+                        className='socialbutton'
                         colorScheme="yellow"
                         leftIcon={<FaSnapchat/>}
                         onClick={() => window.location.href = snapchat.url}
@@ -99,7 +99,7 @@ export default function SocialsLinks({ user }) {
                 }
                 {tiktok &&
                     <Button
-                        classname='socialbutton'
+                        className='socialbutton'
                         colorScheme="blue"
                         leftIcon={<FaTiktok/>}
                         onClick={() => window.location.href = tiktok.url}

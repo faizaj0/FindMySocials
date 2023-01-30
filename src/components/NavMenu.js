@@ -1,10 +1,12 @@
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, VStack } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { Text, Box, Button, IconButton, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useColorMode, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { paths } from "../constants/paths";
 import NavMenuButton from "./NavMenuButton";
 
 export default function NavMenu({ isOpen, onClose }) {
     const navigate = useNavigate();
+    const { colorMode, toggleColorMode } = useColorMode();
 
     return (
         <Modal
@@ -23,10 +25,25 @@ export default function NavMenu({ isOpen, onClose }) {
                             label={'Home'}
                             onClick={() => navigate(paths.HOME)}
                         />
-                        <NavMenuButton
+                        {/*<NavMenuButton
                             label={'Settings'}
                             onClick={() => navigate(paths.ACCOUNT)}
-                        />
+                        />*/}
+                        <Button
+                            className='socialbutton'
+                            colorScheme={'#3b3939'}
+                            onClick={() => toggleColorMode()}
+                            style={{
+                                color: colorMode == 'light' ? '#1a202c' : 'white',
+                                background: colorMode == 'light' ? '#edf2f7' : '#3d4756'
+                            }}
+                        >
+                            {colorMode == 'light' ? 'Dark Mode' : 'Light Mode'}
+                            {/*<Box style={{ marginLeft: '1em' }}>
+                                {colorMode == 'light' ? <MoonIcon /> : <SunIcon />}
+                            </Box>*/}
+                        </Button>
+
                         <NavMenuButton
                             label={'Privacy Policy'}
                             onClick={() => navigate(paths.POLICY)}

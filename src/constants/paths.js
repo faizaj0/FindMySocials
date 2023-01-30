@@ -8,6 +8,7 @@ export const paths = {
     USER_DETAIL_INDEX: '/user/:index',
     POLICY: '/privacy-policy',
     ACCOUNT: '/account',
+    ONBOARD: '/onboard',
 }
 
 export const apiPaths = {

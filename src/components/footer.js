@@ -78,7 +78,7 @@ export default function Footer() {
                     <Text size={'xs'} color='white'>Locate</Text>
                 </Box>
                 <Box
-                    onClick={() => toggleColorMode()}
+                    onClick={() => navigate(paths.ACCOUNT)}
                     cursor='pointer'
                 >
                     <IconButton
@@ -87,9 +87,9 @@ export default function Footer() {
                         color={'white'}
                         size="lg"
                         aria-label="Color Mode Switch"
-                        icon={colorMode == 'light' ? <MoonIcon /> : <SunIcon />}
+                        icon={<SettingsIcon />}
                     />
-                    <Text size={'xs'} color='white'>{colorMode == 'light' ? 'Dark' : 'Light'}</Text>
+                    <Text size={'xs'} color='white'>Account</Text>
                 </Box>
                 <Box
                     onClick={onOpen}

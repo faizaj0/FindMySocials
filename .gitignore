@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+capacitor.config.ts
+package-lock.json
+package.json
+package-lock.json
+package.json
+package-lock.json
+package.json
