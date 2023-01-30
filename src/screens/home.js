@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { handleReq } from "../constants/utils";
 import { useNavigate } from "react-router-dom";
 import { apiURL } from "../constants/config";
+import { paths } from "../constants/paths";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -21,6 +22,10 @@ export default function Home() {
         const profileData = await handleReq(apiURL+"/dj/api/users/user-profile/", 'GET', null, navigate);
         console.log('Nearby Users: ', nearbyUsersData);
         console.log('User Profile: ', profileData);
+
+        if (profileData.length > 0 && !profileData[0].location) {
+            navigate(paths.ONBOARD);
+        }
   
         if (!nearbyUsersData) {
             console.log('Nearby Users Data Could Not Be Retrieved');
@@ -32,6 +37,7 @@ export default function Home() {
             setLoading(false);
             return;
         }
+        
 
         //setNearbyUsers(nearbyUsersData.nearby_users);
         console.log('Works');
