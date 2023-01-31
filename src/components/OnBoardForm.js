@@ -65,10 +65,10 @@ export default function SignUpForm() {
       );
       console.log("Result: ", data);
         
-      if (!data.success) {
+      /*if (!data.success) {
         console.log("Onboarding response data Could Not Be Retrieved");
         return;
-      }
+      }*/
       navigate(paths.HOME);
     };
     fetchData();
